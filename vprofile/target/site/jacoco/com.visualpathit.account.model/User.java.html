@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Visualpathit VProfile Webapp</a> &gt; <a href="index.source.html" class="el_package">com.visualpathit.account.model</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package com.visualpathit.account.model;
+
+
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+@Table(name = &quot;user&quot;)
+<span class="nc" id="L9">public class User {</span>
+    private Long id;
+    private String username;
+    private String password;
+    private String userEmail;
+    private String passwordConfirm;
+    private Set&lt;Role&gt; roles;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
+<span class="nc" id="L20">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="nc" id="L24">        this.id = id;</span>
+<span class="nc" id="L25">    }</span>
+
+    public String getUsername() {
+<span class="nc" id="L28">        return username;</span>
+    }
+
+    public void setUsername(String username) {
+<span class="nc" id="L32">        this.username = username;</span>
+<span class="nc" id="L33">    }</span>
+
+    public String getPassword() {
+<span class="nc" id="L36">        return password;</span>
+    }
+
+    public void setPassword(String password) {
+<span class="nc" id="L40">        this.password = password;</span>
+<span class="nc" id="L41">    }</span>
+    
+    public String getUserEmail() {
+<span class="nc" id="L44">		return userEmail;</span>
+	}
+
+	public void setUserEmail(String userEmail) {
+<span class="nc" id="L48">		this.userEmail = userEmail;</span>
+<span class="nc" id="L49">	}</span>
+
+	@Transient
+    public String getPasswordConfirm() {
+<span class="nc" id="L53">        return passwordConfirm;</span>
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+<span class="nc" id="L57">        this.passwordConfirm = passwordConfirm;</span>
+<span class="nc" id="L58">    }</span>
+
+    @ManyToMany
+    @JoinTable(name = &quot;user_role&quot;, joinColumns = @JoinColumn(name = &quot;user_id&quot;), inverseJoinColumns = @JoinColumn(name = &quot;role_id&quot;))
+    public Set&lt;Role&gt; getRoles() {
+<span class="nc" id="L63">        return roles;</span>
+    }
+
+    public void setRoles(Set&lt;Role&gt; roles) {
+<span class="nc" id="L67">        this.roles = roles;</span>
+<span class="nc" id="L68">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>
